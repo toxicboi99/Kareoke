@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Karaoke Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- LEFT MIXER -->
+  <div class="mixer">
+
+    <label>🎵</label>
+    <input type="range" id="musicVol" min="0" max="1" step="0.01" value="1">
+
+    <label>🎙</label>
+    <input type="range" id="micVol" min="0" max="1" step="0.01" value="1">
+
+    <label>🎛</label>
+    <input type="range" id="echoVol" min="0" max="1" step="0.01" value="0.2">
+
+  </div>
+
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <h2>🎤 Karaoke Pro</h2>
+
+    <audio id="audio"></audio>
+
+    <div id="lyrics" class="lyrics"></div>
+
+    <div class="controls">
+      <button id="playBtn">▶</button>
+      <button id="micBtn">🎙</button>
+      <button id="recordBtn">⏺</button>
+      <button id="songBtn">🎵</button>
+      <button id="loadBtn">📂</button>
+
+      <input type="file" id="songInput" hidden accept="audio/*">
+      <input type="file" id="lrcInput" hidden accept=".lrc">
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(135deg,#0f0f0f,#1c1c2e);
+  color:white;
+  height:100vh;
+  display:flex;
+}
+
+/* APP LAYOUT */
+.app{
+  display:flex;
+  width:100%;
+}
+
+
+/* LEFT MIXER PANEL */
+.mixer{
+  width:80px;
+  background:#111;
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:25px;
+  border-right:1px solid #222;
+}
+
+/* vertical sliders */
+.mixer input{
+  writing-mode: bt-lr;
+  -webkit-appearance: slider-vertical;
+  width:8px;
+  height:120px;
+}
+
+.mixer label{
+  font-size:18px;
+}
+
+
+/* MAIN AREA */
+.main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+}
+
+
+.lyrics{
+  height:300px;
+  width:100%;
+  max-width:500px;
+  overflow:auto;
+  text-align:center;
+  margin:20px 0;
+}
+
+
+/* lyric animation */
+.line{
+  opacity:0.3;
+  padding:6px;
+  transition:0.3s;
+}
+
+.active{
+  opacity:1;
+  font-size:26px;
+  color:#00ffcc;
+  text-shadow:0 0 12px #00ffcc;
+}
+
+
+/* buttons */
+.controls button{
+  margin:5px;
+  padding:10px 14px;
+  border-radius:12px;
+  background:#222;
+  color:white;
+  border:none;
+}
