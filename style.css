@@ -11,14 +11,16 @@ html, body{
   width:100%;
   background:black;
   font-family:Arial, sans-serif;
-  overflow:hidden;   /* stop flex jumping */
+
+  overflow:hidden;        /* stop scroll bounce */
+  overflow-x:hidden;      /* stop side scroll / zoom */
 }
 
 
 /* ================= APP FULLSCREEN ================= */
 
 .app{
-  height:100dvh;   /* ⭐ mobile safe height */
+  height:100dvh;          /* ⭐ mobile safe height */
   width:100%;
   display:flex;
   flex-direction:column;
@@ -34,7 +36,7 @@ html, body{
   background:black;
 }
 
-/* video always fill perfectly */
+/* video always fill screen */
 .media{
   position:absolute;
   inset:0;
@@ -71,42 +73,88 @@ html, body{
 }
 
 
-/* ================= CONTROLS ================= */
+/* ================= CONTROLS (FIXED) ================= */
 
 .controls{
-  flex-shrink:0;          /* ⭐ prevent flex squeeze */
+  flex-shrink:0;
   display:flex;
-  justify-content:space-around;
-  padding:10px;
+
+  justify-content:space-between; /* ⭐ auto fit */
+  gap:6px;
+
+  padding:8px;
   background:#111;
 }
 
+/* responsive buttons */
 .controls button{
+  flex:1;               /* ⭐ equal width */
+  min-width:0;          /* ⭐ prevent overflow */
+
+  height:56px;
+
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-
-  width:60px;
-  height:60px;
 
   border-radius:12px;
   border:none;
 
   background:#222;
   color:white;
-  font-size:20px;
+
+  font-size:18px;
+  cursor:pointer;
 }
 
-.controls span{
+.controls button span{
   font-size:11px;
   margin-top:3px;
+  opacity:0.85;
+}
+
+.controls button:active{
+  transform:scale(0.96);
 }
 
 
-/* ================= MIXER ================= */
+/* ================= MIXER (FIXED) ================= */
 
 .mixer{
+  flex-shrink:0;
+  width:100%;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  padding:10px;
+  background:#181818;
+}
+
+.mixer input{
+  flex:1;
+}
+
+
+/* ================= MOBILE TUNING ================= */
+
+@media (max-width:768px){
+
+  .active{
+    font-size:22px;
+  }
+
+  .controls button{
+    height:50px;
+    font-size:16px;
+  }
+
+  .controls button span{
+    font-size:10px;
+  }
+}.mixer{
   flex-shrink:0;   /* ⭐ important */
   display:flex;
   align-items:center;
@@ -188,4 +236,5 @@ html, body{
   color:black;
   transform:scale(1.05);
 }
+
 
