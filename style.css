@@ -1,20 +1,23 @@
+/* ================= BASE ================= */
+
 body{
   margin:0;
   font-family:Arial;
   background:linear-gradient(135deg,#0f0f0f,#1c1c2e);
   color:white;
   height:100vh;
-  display:flex;
 }
 
-/* APP LAYOUT */
+/* ================= APP LAYOUT ================= */
+
 .app{
   display:flex;
-  width:100%;
+  height:100vh;
 }
 
 
-/* LEFT MIXER PANEL */
+/* ================= MIXER (DESKTOP LEFT) ================= */
+
 .mixer{
   width:80px;
   background:#111;
@@ -26,11 +29,9 @@ body{
   border-right:1px solid #222;
 }
 
-/* vertical sliders */
 .mixer input{
   writing-mode: bt-lr;
   -webkit-appearance: slider-vertical;
-  width:8px;
   height:120px;
 }
 
@@ -39,24 +40,26 @@ body{
 }
 
 
-/* MAIN AREA */
+/* ================= MAIN ================= */
+
 .main{
   flex:1;
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   padding:15px;
 }
 
-
 .lyrics{
-  height:300px;
+  height:320px;
   width:100%;
   max-width:500px;
   overflow:auto;
   text-align:center;
-  margin:20px 0;
+  border-radius:15px;
+  background:rgba(255,255,255,0.05);
+  padding:10px;
 }
 
 
@@ -76,6 +79,10 @@ body{
 
 
 /* buttons */
+.controls{
+  margin-top:15px;
+}
+
 .controls button{
   margin:5px;
   padding:10px 14px;
@@ -83,4 +90,55 @@ body{
   background:#222;
   color:white;
   border:none;
+  font-size:18px;
+}
+
+
+
+/* =================================================
+   📱 MOBILE RESPONSIVE
+================================================= */
+
+@media (max-width: 768px){
+
+  .app{
+    flex-direction:column;
+  }
+
+  /* mixer becomes bottom */
+  .mixer{
+    order:2;
+    width:100%;
+    height:90px;
+    flex-direction:row;
+    justify-content:space-around;
+    border-right:none;
+    border-top:1px solid #222;
+  }
+
+  /* sliders horizontal */
+  .mixer input{
+    writing-mode: horizontal-tb;
+    -webkit-appearance: none;
+    width:80px;
+    height:6px;
+  }
+
+  .main{
+    order:1;
+  }
+
+  .lyrics{
+    height:55vh;
+    font-size:20px;
+  }
+
+  .active{
+    font-size:24px;
+  }
+
+  .controls button{
+    font-size:20px;
+    padding:12px 16px;
+  }
 }
