@@ -1,4 +1,6 @@
-/* ================= RESET ================= */
+/* =================================================
+   RESET + GLOBAL SAFETY
+================================================= */
 
 *{
   box-sizing:border-box;
@@ -7,46 +9,51 @@
 }
 
 html, body{
-  height:100%;
   width:100%;
-  background:black;
+  height:100%;
+  background:#000;
   font-family:Arial, sans-serif;
 
-  overflow:hidden;        /* stop scroll bounce */
-  overflow-x:hidden;      /* stop side scroll / zoom */
+  overflow:hidden;          /* stop vertical bounce */
+  overflow-x:hidden;        /* ⭐ stop horizontal scroll */
 }
 
 
-/* ================= APP FULLSCREEN ================= */
+/* =================================================
+   APP LAYOUT (FULLSCREEN SAFE)
+================================================= */
 
 .app{
-  height:100dvh;          /* ⭐ mobile safe height */
   width:100%;
+  height:100dvh;            /* ⭐ mobile safe height */
   display:flex;
   flex-direction:column;
 }
 
 
-/* ================= PLAYER ================= */
+/* =================================================
+   PLAYER (VIDEO AREA)
+================================================= */
 
 .player{
   flex:1;
   position:relative;
   overflow:hidden;
-  background:black;
+  background:#000;
 }
 
-/* video always fill screen */
 .media{
   position:absolute;
   inset:0;
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:cover;          /* ⭐ perfect fullscreen */
 }
 
 
-/* ================= LYRICS ================= */
+/* =================================================
+   LYRICS OVERLAY
+================================================= */
 
 .lyrics{
   position:absolute;
@@ -73,23 +80,25 @@ html, body{
 }
 
 
-/* ================= CONTROLS (FIXED) ================= */
+/* =================================================
+   CONTROLS (BUTTON ROW)  ⭐ FULLY FIXED
+================================================= */
 
 .controls{
   flex-shrink:0;
-  display:flex;
+  width:100%;
 
-  justify-content:space-between; /* ⭐ auto fit */
+  display:flex;
   gap:6px;
 
   padding:8px;
   background:#111;
 }
 
-/* responsive buttons */
+/* ⭐ auto equal buttons — NEVER overflow */
 .controls button{
-  flex:1;               /* ⭐ equal width */
-  min-width:0;          /* ⭐ prevent overflow */
+  flex:1 1 0;
+  min-width:0;
 
   height:56px;
 
@@ -104,7 +113,7 @@ html, body{
   background:#222;
   color:white;
 
-  font-size:18px;
+  font-size:16px;
   cursor:pointer;
 }
 
@@ -119,7 +128,9 @@ html, body{
 }
 
 
-/* ================= MIXER (FIXED) ================= */
+/* =================================================
+   MIXER (SLIDER ROW)  ⭐ CRITICAL FIX
+================================================= */
 
 .mixer{
   flex-shrink:0;
@@ -127,20 +138,40 @@ html, body{
 
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:6px;
 
-  padding:10px;
+  padding:8px;
   background:#181818;
+
+  overflow:hidden;           /* ⭐ stops layout stretch */
 }
 
+/* ⭐ sliders shrink properly */
 .mixer input{
-  flex:1;
+  flex:1 1 0;
+  min-width:0;
 }
 
 
-/* ================= MOBILE TUNING ================= */
+/* =================================================
+   MOBILE TUNING
+================================================= */
 
 @media (max-width:768px){
+
+  .controls button{
+    height:50px;
+    font-size:15px;
+  }
+
+  .controls button span{
+    font-size:10px;
+  }
+
+  .active{
+    font-size:22px;
+  }
+}@media (max-width:768px){
 
   .active{
     font-size:22px;
@@ -236,5 +267,6 @@ html, body{
   color:black;
   transform:scale(1.05);
 }
+
 
 
