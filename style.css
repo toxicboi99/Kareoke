@@ -2,54 +2,56 @@
 
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
+html, body{
+  height:100%;
+  width:100%;
   background:black;
-  color:white;
-  height:100vh;
-  width:100vw;
-  overflow:hidden;
+  font-family:Arial, sans-serif;
+  overflow:hidden;   /* stop flex jumping */
 }
+
 
 /* ================= APP FULLSCREEN ================= */
 
 .app{
-  height:100vh;
-  width:100vw;
+  height:100dvh;   /* ⭐ mobile safe height */
+  width:100%;
   display:flex;
   flex-direction:column;
 }
 
-/* ================= PLAYER (FULL SCREEN) ================= */
+
+/* ================= PLAYER ================= */
 
 .player{
-  position:relative;
   flex:1;
-  background:black;
+  position:relative;
   overflow:hidden;
+  background:black;
 }
 
-/* VIDEO ALWAYS FULL SCREEN */
+/* video always fill perfectly */
 .media{
   position:absolute;
-  top:0;
-  left:0;
+  inset:0;
   width:100%;
   height:100%;
-  object-fit:cover;   /* fills screen fully */
+  object-fit:cover;
 }
 
-/* ================= LYRICS OVERLAY ================= */
+
+/* ================= LYRICS ================= */
 
 .lyrics{
   position:absolute;
-  bottom:20%;
+  bottom:22%;
   width:100%;
   text-align:center;
-  padding:12px;
+  padding:10px;
   pointer-events:none;
 }
 
@@ -57,45 +59,58 @@ body{
   opacity:0.35;
   font-size:18px;
   padding:6px;
-  transition:0.3s;
+  transition:0.25s;
 }
 
 .active{
   opacity:1;
-  font-size:30px;
+  font-size:28px;
   font-weight:bold;
   color:#00ffe0;
-  text-shadow:
-    0 0 8px #00ffe0,
-    0 0 20px #00ffe0;
+  text-shadow:0 0 12px #00ffe0;
 }
+
 
 /* ================= CONTROLS ================= */
 
 .controls{
+  flex-shrink:0;          /* ⭐ prevent flex squeeze */
   display:flex;
   justify-content:space-around;
-  align-items:center;
   padding:10px;
   background:#111;
 }
 
 .controls button{
-  width:48px;
-  height:48px;
-  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  width:60px;
+  height:60px;
+
+  border-radius:12px;
   border:none;
-  font-size:18px;
+
   background:#222;
   color:white;
+  font-size:20px;
 }
+
+.controls span{
+  font-size:11px;
+  margin-top:3px;
+}
+
 
 /* ================= MIXER ================= */
 
 .mixer{
+  flex-shrink:0;   /* ⭐ important */
   display:flex;
-  gap:10px;
   align-items:center;
+  gap:8px;
   padding:10px;
   background:#181818;
 }
@@ -104,9 +119,21 @@ body{
   flex:1;
 }
 
-/* ================= MOBILE OPTIMIZED ================= */
+
+/* ================= MOBILE FIXES ================= */
 
 @media (max-width:768px){
+
+  .active{
+    font-size:22px;
+  }
+
+  .controls button{
+    width:52px;
+    height:52px;
+    font-size:18px;
+  }
+}@media (max-width:768px){
 
   .controls button{
     width:44px;
@@ -161,3 +188,4 @@ body{
   color:black;
   transform:scale(1.05);
 }
+
