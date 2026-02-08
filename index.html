@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5, user-scalable=yes">
+
+  <title>Karaoke Studio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- VIDEO / AUDIO PLAYER -->
+  <div class="player">
+    <video id="media" class="media" playsinline></video>
+    <div id="lyrics" class="lyrics"></div>
+  </div>
+
+
+  <div class="controls">
+
+  <button id="playBtn">
+    ▶
+    <span>Play</span>
+  </button>
+
+  <button id="micBtn">
+    🎙
+    <span>Mic</span>
+  </button>
+
+  <button id="recordBtn">
+    ⏺
+    <span>Rec</span>
+  </button>
+
+  <button id="songBtn">
+    🎵
+    <span>Song</span>
+  </button>
+
+  <button id="loadBtn">
+    📂
+    <span>Lyrics</span>
+  </button>
+
+  <input type="file" id="songInput" hidden accept="audio/*,video/*">
+  <input type="file" id="lrcInput" hidden accept=".lrc">
+
+</div>
+
+
+
+  <!-- MIXER -->
+  <div class="mixer">
+    🎵 <input type="range" id="musicVol" min="0" max="1" step="0.01" value="1">
+    🎙 <input type="range" id="micVol" min="0" max="1" step="0.01" value="1">
+    🎛 <input type="range" id="echoVol" min="0" max="1" step="0.01" value="0.2">
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

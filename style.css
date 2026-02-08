@@ -1,0 +1,163 @@
+/* ================= RESET ================= */
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:black;
+  color:white;
+  height:100vh;
+  width:100vw;
+  overflow:hidden;
+}
+
+/* ================= APP FULLSCREEN ================= */
+
+.app{
+  height:100vh;
+  width:100vw;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ================= PLAYER (FULL SCREEN) ================= */
+
+.player{
+  position:relative;
+  flex:1;
+  background:black;
+  overflow:hidden;
+}
+
+/* VIDEO ALWAYS FULL SCREEN */
+.media{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;   /* fills screen fully */
+}
+
+/* ================= LYRICS OVERLAY ================= */
+
+.lyrics{
+  position:absolute;
+  bottom:20%;
+  width:100%;
+  text-align:center;
+  padding:12px;
+  pointer-events:none;
+}
+
+.line{
+  opacity:0.35;
+  font-size:18px;
+  padding:6px;
+  transition:0.3s;
+}
+
+.active{
+  opacity:1;
+  font-size:30px;
+  font-weight:bold;
+  color:#00ffe0;
+  text-shadow:
+    0 0 8px #00ffe0,
+    0 0 20px #00ffe0;
+}
+
+/* ================= CONTROLS ================= */
+
+.controls{
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  padding:10px;
+  background:#111;
+}
+
+.controls button{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:none;
+  font-size:18px;
+  background:#222;
+  color:white;
+}
+
+/* ================= MIXER ================= */
+
+.mixer{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:10px;
+  background:#181818;
+}
+
+.mixer input{
+  flex:1;
+}
+
+/* ================= MOBILE OPTIMIZED ================= */
+
+@media (max-width:768px){
+
+  .controls button{
+    width:44px;
+    height:44px;
+    font-size:16px;
+  }
+
+  .active{
+    font-size:24px;
+  }
+
+}
+/* ===== Controls layout ===== */
+
+.controls{
+  display:flex;
+  justify-content:space-around;
+  padding:10px;
+  background:#111;
+}
+
+/* ===== Buttons with label ===== */
+
+.controls button{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  width:65px;
+  height:65px;
+
+  border-radius:14px;
+  border:none;
+
+  background:#222;
+  color:white;
+
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* text label */
+.controls button span{
+  font-size:11px;
+  margin-top:4px;
+  opacity:0.8;
+}
+
+.controls button:hover{
+  background:#00ffe0;
+  color:black;
+  transform:scale(1.05);
+}
